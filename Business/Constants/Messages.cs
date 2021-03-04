@@ -1,6 +1,7 @@
 ﻿using Core.Entities.Concrete;
 using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace Business.Constants
@@ -18,5 +19,6 @@ namespace Business.Constants
         public static string AccessTokenCreated="Token Oluşturuldu";
         public static string WeakPassword="Şifreniz uygun değil.";
         public static string PasswordRequirement="Parola Min 5 karakter maksimum 8 karakterden oluşmalı.En az bir büyük harf,bir küçük harf ve bir rakam içermelidir.";
+        public static string AuthorizationDenied="Yetkiniz Yok";
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.ValidationRules.FluentValidation;
 using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results;
@@ -24,7 +25,7 @@ namespace Business.Concrete
         }
 
 
-        
+        [SecuredOperation("car.add,admin")]
         public IResult Add(Car entity)
         {
             ValidationTool.Validate(new CarValidator(),entity);
