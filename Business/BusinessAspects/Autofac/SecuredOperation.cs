@@ -1,15 +1,12 @@
 ﻿
+using Business.Constants;
 using Castle.DynamicProxy;
 using Core.Extentions;
 using Core.Utilities.Interceptors;
 using Core.Utilities.IoC;
 using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Castle.DynamicProxy;
 using Microsoft.Extensions.DependencyInjection;
-using Business.Constants;
+using System;
 
 namespace Business.BusinessAspects.Autofac
 {

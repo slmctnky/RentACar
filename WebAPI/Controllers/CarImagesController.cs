@@ -36,7 +36,27 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
-      
+        [HttpGet("getfilebyid")]
+        public IActionResult GetFileById(int id)
+        {
+            var result = _entityService.GetById(id);
+
+            if (result.Success)
+            {
+                Byte[] b = System.IO.File.ReadAllBytes(result.Data.ImagePath);
+                return File(b, "image/jpeg");
+            }
+
+            return BadRequest(result);
+        }
+        [HttpGet("getimagesbycarid")]
+        public IActionResult GetImagesByCarId(int id)
+        {
+            var result = _entityService.GetImagesByCarId(id);
+            if (result.Success) return Ok(result);
+
+            return BadRequest(result);
+        }
 
         [HttpGet("getbycarid")]
         public IActionResult GetByCarId(int carId)
@@ -58,11 +78,11 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("imageupload"), DisableRequestSizeLimit]
-        public IActionResult Add(int carId)
+        public IActionResult Add([FromForm(Name = ("Image"))] IFormFile [] files,int carId)
         {
             List<IResult> results=new List<IResult>();
         
-            foreach (var file in Request.Form.Files)
+            foreach (var file in files)
             {
                 var result = _entityService.Add(file, carId);
                 results.Add(result);

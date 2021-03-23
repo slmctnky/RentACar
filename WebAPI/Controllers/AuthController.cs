@@ -11,7 +11,7 @@ namespace WebAPI.Controllers
     [ApiController]
     public class AuthController : Controller
     {
-        private IAuthService _authService;
+        private IAuthService _authService; 
 
         public AuthController(IAuthService authService)
         {

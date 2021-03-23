@@ -2,6 +2,7 @@
 using Business.Constants;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
+using Entities;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -52,7 +53,11 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll());
         }
 
-
+        public IDataResult<List<RentalDetailDto>> GetAllWithDetail()
+        {
+            var result = _rentalDal.GetAllWithDetail();
+            return new SuccessDataResult<List<RentalDetailDto>>(result);
+        }
 
         public IDataResult<Rental> GetById(int entityId)
         {
@@ -65,5 +70,6 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
+       
     }
 }

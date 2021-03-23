@@ -11,6 +11,8 @@ namespace Business.Abstract
 {
     public interface ICarImageService : IBusinessRepository<CarImage>
     {
+        IDataResult<List<CarImage>> GetImagesByCarId(int carId);
+
         IDataResult <List<CarImage>> GetByWithCarId(int carId);
         IResult Add(IFormFile file, int carId);
 

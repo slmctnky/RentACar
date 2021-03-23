@@ -1,6 +1,6 @@
 ﻿using Core.Business;
 using Core.Utilities.Results;
-
+using Entities;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -10,5 +10,6 @@ namespace Business.Abstract
 {
     public interface IRentalService : IBusinessRepository<Rental>
     {
+        IDataResult<List<RentalDetailDto>> GetAllWithDetail();
     }
 }

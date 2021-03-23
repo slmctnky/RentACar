@@ -28,9 +28,10 @@ namespace Business.Concrete
 
         public IResult Add(CarImage entity)
         {
-           
-            _dal.Add(entity);
-            return new SuccessResult("Kayıt Eklendi");
+
+            //_dal.Add(entity);
+            //return new SuccessResult("Kayıt Eklendi");
+            return new ErrorResult("") ;
         }
 
         public IResult Add(IFormFile file,int carId)
@@ -63,7 +64,13 @@ namespace Business.Concrete
 
             return new SuccessResult();
         }
+        public IDataResult<List<CarImage>> GetImagesByCarId(int carId)
+        {
+            var result = _dal.GetAll(c => c.CarId == carId);
+           // IfCarImageOfCarNotExistsAddDefault(ref result);
 
+            return new SuccessDataResult<List<CarImage>>(result);
+        }
         public IResult Delete(CarImage entity)
         {
             string dbPath = entity.ImagePath;

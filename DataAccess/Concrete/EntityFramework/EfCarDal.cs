@@ -27,7 +27,10 @@ namespace DataAccess.Concrete.EntityFramework
                                  CarName = c.Name,
                                  ColorName = col.Name,
                                  BrandName = b.Name,
-                                 DailyPrice = c.DailyPrice
+                                 DailyPrice = c.DailyPrice,
+                                 ColorId=c.ColorId,
+                                 BrandId=b.Id,
+                                 Id=c.Id
                              };
                 
                 return filter == null ? result.ToList(): result.Where(filter).ToList();
